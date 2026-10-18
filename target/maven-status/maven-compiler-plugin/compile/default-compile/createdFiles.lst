@@ -1,3 +1,4 @@
+com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/dto/CreateTaskStatusRequest.class
 com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/entity/TaskStatusEntity.class
 com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/entity/TaskPriorityEntity$TaskPriorityEntityBuilder.class
 com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/entity/TaskPriorityEntity.class
@@ -6,6 +7,7 @@ com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/entit
 com/myservicetasks/my_service_tasks/domain/model/TaskPriority$TaskPriorityBuilder.class
 com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/repository/SpringDataTaskPriorityRepository.class
 com/myservicetasks/my_service_tasks/domain/model/Task.class
+com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/dto/CreateTaskPriorityRequest.class
 com/myservicetasks/my_service_tasks/application/service/TaskService.class
 com/myservicetasks/my_service_tasks/domain/ports/in/TaskUseCase.class
 com/myservicetasks/my_service_tasks/domain/model/Task$TaskBuilder.class
@@ -15,6 +17,7 @@ com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/entit
 com/myservicetasks/my_service_tasks/domain/model/TaskStatus$TaskStatusBuilder.class
 com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/repository/SpringDataTaskRepository.class
 com/myservicetasks/my_service_tasks/domain/model/TaskStatus.class
+com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/TaskPriorityController.class
 com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/mapper/TaskPersistenceMapper.class
 com/myservicetasks/my_service_tasks/domain/ports/out/TaskRepositoryPort.class
 com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/dto/CreateTaskRequest.class
@@ -22,4 +25,6 @@ com/myservicetasks/my_service_tasks/MyServiceTasksApplication.class
 com/myservicetasks/my_service_tasks/infrastructure/config/security/SecurityConfig.class
 com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/entity/TaskEntity$TaskEntityBuilder.class
 com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/repository/SpringDataTaskStatusRepository.class
+com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/dto/UpdateTaskRequest.class
 com/myservicetasks/my_service_tasks/domain/model/TaskPriority.class
+com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/TaskStatusController.class

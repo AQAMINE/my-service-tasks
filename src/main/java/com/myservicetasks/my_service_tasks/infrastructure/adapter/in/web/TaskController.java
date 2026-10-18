@@ -5,6 +5,7 @@ import com.myservicetasks.my_service_tasks.domain.model.TaskPriority;
 import com.myservicetasks.my_service_tasks.domain.model.TaskStatus;
 import com.myservicetasks.my_service_tasks.domain.ports.in.TaskUseCase;
 import com.myservicetasks.my_service_tasks.infrastructure.adapter.in.web.dto.CreateTaskRequest;
+import com.myservicetasks.my_service_tasks.infrastructure.adapter.in.web.dto.UpdateTaskRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -50,6 +51,22 @@ public class TaskController {
                 request.priorityId(),
                 request.position(),
                 request.dueDate()
+        );
+    }
+
+    @PatchMapping("/{id}")
+    public Task updateTask(@AuthenticationPrincipal Jwt jwt, @PathVariable UUID id, @Valid @RequestBody UpdateTaskRequest request) {
+        UUID userId = UUID.fromString(jwt.getSubject());
+        return taskUseCase.updateTask(
+                id,
+                userId,
+                request.title(),
+                request.description(),
+                request.statusId(),
+                request.priorityId(),
+                request.position(),
+                request.dueDate(),
+                Boolean.TRUE.equals(request.updateDueDate())
         );
     }
 

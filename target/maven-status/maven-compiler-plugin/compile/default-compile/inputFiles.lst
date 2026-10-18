@@ -6,7 +6,12 @@
 /Users/amineaqeblip/Documents/GitHub/my-service-tasks/src/main/java/com/myservicetasks/my_service_tasks/domain/ports/in/TaskUseCase.java
 /Users/amineaqeblip/Documents/GitHub/my-service-tasks/src/main/java/com/myservicetasks/my_service_tasks/domain/ports/out/TaskRepositoryPort.java
 /Users/amineaqeblip/Documents/GitHub/my-service-tasks/src/main/java/com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/TaskController.java
+/Users/amineaqeblip/Documents/GitHub/my-service-tasks/src/main/java/com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/TaskPriorityController.java
+/Users/amineaqeblip/Documents/GitHub/my-service-tasks/src/main/java/com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/TaskStatusController.java
+/Users/amineaqeblip/Documents/GitHub/my-service-tasks/src/main/java/com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/dto/CreateTaskPriorityRequest.java
 /Users/amineaqeblip/Documents/GitHub/my-service-tasks/src/main/java/com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/dto/CreateTaskRequest.java
+/Users/amineaqeblip/Documents/GitHub/my-service-tasks/src/main/java/com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/dto/CreateTaskStatusRequest.java
+/Users/amineaqeblip/Documents/GitHub/my-service-tasks/src/main/java/com/myservicetasks/my_service_tasks/infrastructure/adapter/in/web/dto/UpdateTaskRequest.java
 /Users/amineaqeblip/Documents/GitHub/my-service-tasks/src/main/java/com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/TaskPersistenceAdapter.java
 /Users/amineaqeblip/Documents/GitHub/my-service-tasks/src/main/java/com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/entity/TaskEntity.java
 /Users/amineaqeblip/Documents/GitHub/my-service-tasks/src/main/java/com/myservicetasks/my_service_tasks/infrastructure/adapter/out/persistence/entity/TaskPriorityEntity.java

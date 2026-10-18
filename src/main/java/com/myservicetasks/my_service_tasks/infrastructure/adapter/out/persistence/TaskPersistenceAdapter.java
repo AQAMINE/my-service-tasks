@@ -14,6 +14,7 @@ import com.myservicetasks.my_service_tasks.infrastructure.adapter.out.persistenc
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -53,6 +54,37 @@ public class TaskPersistenceAdapter implements TaskRepositoryPort {
     }
 
     @Override
+    public Task update(UUID id, UUID userId, String title, String description, UUID statusId, UUID priorityId, Integer position, Instant dueDate, boolean updateDueDate) {
+        TaskEntity entity = taskRepository.findByIdAndUserId(id, userId)
+                .orElseThrow(() -> new IllegalArgumentException("Tâche non trouvée"));
+
+        if (title != null) {
+            entity.setTitle(title);
+        }
+        if (description != null) {
+            entity.setDescription(description);
+        }
+        if (position != null) {
+            entity.setPosition(position);
+        }
+        if (updateDueDate) {
+            entity.setDueDate(dueDate);
+        }
+        if (statusId != null) {
+            TaskStatusEntity status = statusRepository.findById(statusId)
+                    .orElseThrow(() -> new IllegalArgumentException("Statut introuvable"));
+            entity.setStatus(status);
+        }
+        if (priorityId != null) {
+            TaskPriorityEntity priority = priorityRepository.findById(priorityId)
+                    .orElseThrow(() -> new IllegalArgumentException("Priorité introuvable"));
+            entity.setPriority(priority);
+        }
+
+        return mapper.toDomain(taskRepository.save(entity));
+    }
+
+    @Override
     public void delete(UUID id) {
         taskRepository.deleteById(id);
     }
@@ -85,6 +117,32 @@ public class TaskPersistenceAdapter implements TaskRepositoryPort {
     }
 
     @Override
+    public TaskStatus saveStatus(TaskStatus status) {
+        TaskStatusEntity entity = TaskStatusEntity.builder()
+                .id(status.getId())
+                .code(status.getCode())
+                .label(status.getLabel())
+                .color(status.getColor())
+                .position(status.getPosition())
+                .isSystem(status.getIsSystem() != null ? status.getIsSystem() : false)
+                .build();
+        TaskStatusEntity saved = statusRepository.save(entity);
+        return TaskStatus.builder()
+                .id(saved.getId())
+                .code(saved.getCode())
+                .label(saved.getLabel())
+                .color(saved.getColor())
+                .position(saved.getPosition())
+                .isSystem(saved.isSystem())
+                .build();
+    }
+
+    @Override
+    public void deleteStatus(UUID id) {
+        statusRepository.deleteById(id);
+    }
+
+    @Override
     public List<TaskPriority> findAllPriorities() {
         return priorityRepository.findAllByOrderByLevelAsc().stream()
                 .map(p -> TaskPriority.builder()
@@ -109,5 +167,31 @@ public class TaskPersistenceAdapter implements TaskRepositoryPort {
                         .level(p.getLevel())
                         .isSystem(p.isSystem())
                         .build());
+    }
+
+    @Override
+    public TaskPriority savePriority(TaskPriority priority) {
+        TaskPriorityEntity entity = TaskPriorityEntity.builder()
+                .id(priority.getId())
+                .code(priority.getCode())
+                .label(priority.getLabel())
+                .color(priority.getColor())
+                .level(priority.getLevel())
+                .isSystem(priority.getIsSystem() != null ? priority.getIsSystem() : false)
+                .build();
+        TaskPriorityEntity saved = priorityRepository.save(entity);
+        return TaskPriority.builder()
+                .id(saved.getId())
+                .code(saved.getCode())
+                .label(saved.getLabel())
+                .color(saved.getColor())
+                .level(saved.getLevel())
+                .isSystem(saved.isSystem())
+                .build();
+    }
+
+    @Override
+    public void deletePriority(UUID id) {
+        priorityRepository.deleteById(id);
     }
 }
