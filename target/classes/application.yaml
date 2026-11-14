@@ -3,14 +3,13 @@ server:
 
 spring:
   application:
-    name: my-service-tasks
+    name: aegis-tasks
 
   datasource:
-    url: jdbc:postgresql://localhost:5435/my_tasks_db?currentSchema=public
-    username: postgres
-    password: postgrespassword
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5435/my_tasks_db?currentSchema=public}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
-
 
   jpa:
     hibernate:
@@ -34,17 +33,17 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8085/realms/my-service-realm
+          issuer-uri: ${SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI:http://localhost:8085/realms/my-service-realm}
 
 keycloak:
-  server-url: http://localhost:8085
-  realm: my-service-realm
-  client-id: my-service-tasks
-  client-secret: "votre-client-secret"
-  username: admin
-  password: admin
+  server-url: ${KEYCLOAK_SERVER_URL:http://localhost:8085}
+  realm: ${KEYCLOAK_REALM:my-service-realm}
+  client-id: ${KEYCLOAK_CLIENT_ID:my-service-tasks}
+  client-secret: ${KEYCLOAK_CLIENT_SECRET:}
+  username: ${KEYCLOAK_ADMIN_USERNAME:}
+  password: ${KEYCLOAK_ADMIN_PASSWORD:}
 
 logging:
   level:
-    org.springframework.security: DEBUG
-    com.myservicetasks: DEBUG
+    org.springframework.security: INFO
+    com.myservicetasks: INFO

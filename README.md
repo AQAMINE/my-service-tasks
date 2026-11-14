@@ -1,7 +1,7 @@
-# my-service-tasks
+# Aegis Tasks
 
 Microservice Spring Boot — **gestionnaire de tâches / Kanban**.  
-Fait partie de la plateforme MyService (auth Keycloak, PostgreSQL partagé via infra Docker).
+Module de la suite **Aegis** (auth Keycloak, PostgreSQL via infra Docker).
 
 > Document de référence (humain + LLM) : structure, ports, APIs, DB, sécurité.
 
@@ -47,7 +47,7 @@ Documents/GitHub/
 |----------|--------|
 | App port | **8084** |
 | Datasource (local) | `jdbc:postgresql://localhost:5435/my_tasks_db` |
-| DB user / password | `postgres` / `postgrespassword` |
+| DB user / password | from env / infra `.env` (never commit secrets) |
 | JWT issuer | `http://localhost:8085/realms/my-service-realm` |
 | Keycloak client-id | `my-service-tasks` |
 | Docker host map | **8084:8084** (`my-service-infra`) |
